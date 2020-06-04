@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yicai.applet.mapper.UserMapper">
+
+    <select id="judgeUser" parameterType="String" resultType="Integer">
+        select count(*) from t_Users where fCode = #{username} and fPassword = #{password}
+    </select>
+
+
+    <select id="findUserName" parameterType="String" resultType="Integer">
+        select count(*) from t_Users where fCode = #{code}
+    </select>
+
+
+
+    <insert id="insertUser" parameterType="String">
+        insert into t_Users(fCode,fName,fPassword,fLock,fChangeTime,fStatus)
+        values(#{code},#{name},#{password},'Y',NOW(),'Y')
+    </insert>
+
+</mapper>
