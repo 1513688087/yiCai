@@ -11,9 +11,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @CrossOrigin
 public class UserController {
-
     @Autowired
     private UserService thisService;
+
+    @RequestMapping("/show")
+    public String login(){
+        return "show";
+    }
 
     /**
      * 登录
@@ -31,13 +35,12 @@ public class UserController {
     /**
      * 添加用户
      * @param code
-     * @param password
      * @return
      */
     @RequestMapping("/addUser")
     @ResponseBody
-    public Msg addUser(String code,String name,String password) {
-        return thisService.addUser(code,name,password);
+    public Msg addUser(String code,String name) {
+        return thisService.addUser(code,name,"123456");
     }
 
 
